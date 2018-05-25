@@ -1,0 +1,104 @@
+$border_gray: 1px solid #d7d7d7;
+.custom-select {
+  z-index: 105;
+  position: relative;
+  width: rem(86px);
+  margin: 0.4rem auto 0.4rem 0.5rem;
+  flex-shrink: 0;
+  @include tablets {
+    margin-right: auto;
+  }
+  select {
+    font-size: rem(16px);
+  }
+}
+
+.select-selected {
+  max-width: 5rem;
+  position: relative;
+  background-color: darken($color_blue, 30%);
+  color: white;
+  padding: 0.5rem 0.5rem;
+  border-bottom: 1px solid rgba($color_border, 0.4);
+
+  cursor: pointer;
+
+  .select-button {
+    position: absolute;
+    top: 50%;
+    right: 10%;
+    transform: translateY(-50%);
+    width: 21px;
+    height: 27px;
+    border-radius: 2px;
+    transition: background-color 0.1s linear;
+    &:after {
+      position: absolute;
+      content: '';
+      top: 50%;
+      right: 50%;
+      width: 16px;
+      height: 8px;
+      transform: translate(50%, -15%);
+      background-image: inline_svg('i_arrow_down', rgb(113, 230, 152));
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+  }
+
+  /*point the arrow upwards when the select box is open (active):*/
+  &.select-arrow-active .select-button:after {
+    border-color: transparent transparent #666666 transparent;
+    top: 30%;
+    transform: translate(50%, -15%) rotate(180deg);
+  }
+}
+
+/*style items (options):*/
+.select-items {
+  max-width: 5rem;
+  position: absolute;
+  top: 90%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+
+  /*style the items (options), including the selected item:*/
+  div {
+    position: relative;
+    color: white;
+    padding: 0.5rem;
+    background-color: darken($color_blue, 30%);
+
+    border: 1px solid transparent;
+    border-width: 0 1px 0 1px;
+    border-color: transparent $color_border transparent $color_border;
+    cursor: pointer;
+    &:before {
+      content: ' ';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      border-bottom: $border_gray;
+    }
+
+    &:last-child {
+      border-bottom-left-radius: 5px;
+      border-bottom-right-radius: 5px;
+      border-bottom-width: 1px;
+    }
+
+    a {
+      display:block;
+    }
+  }
+}
+/*hide the items when the select box is closed:*/
+.select-hide {
+  display: none;
+}
+.select-items div:hover,
+.same-as-selected {
+  background-color: darken(rgb(113, 230, 152), 40%);
+}

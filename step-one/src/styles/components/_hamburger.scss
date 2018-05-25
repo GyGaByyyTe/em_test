@@ -1,0 +1,100 @@
+.hamburger {
+  display: none;
+  text-align: right;
+  position: relative;
+  z-index: 200;
+  margin-right: 2rem;
+  @include tablets {
+    display: flex;
+    margin-right: 5%;
+  }
+}
+.hamburger__line {
+  top: 50%;
+  left: 0;
+  height: 4px;
+  width: 100%;
+  position: absolute;
+  border-radius: 1rem;
+  background-color: rgba($color: $color_white, $alpha: 0.9);
+}
+.hamburger__link {
+  position: relative;
+  display: inline-block;
+  font-size: 0;
+  width: 40px;
+  height: 35px;
+
+  // @include phones {
+  //   width: 26px;
+  //   height: 23px;
+  // }
+
+  &:before {
+    top: 15%;
+    left: 0;
+    height: 4px;
+    width: 100%;
+    position: absolute;
+    content: ' ';
+    border-radius: 1rem;
+    @include transition;
+    transform-origin: 0 50%;
+    background-color: rgba($color: $color_white, $alpha: 0.9);
+  }
+
+  &:after {
+    height: 4px;
+    width: 100%;
+    position: absolute;
+    top: 85%;
+    left: 0;
+    content: ' ';
+    border-radius: 1rem;
+    @include transition;
+    transform-origin: 0 50%;
+    background-color: rgba($color: $color_white, $alpha: 0.9);
+  }
+
+  &--pressed {
+    .hamburger__svg {
+      display: none;
+    }
+    .hamburger__line {
+      opacity: 0;
+    }
+
+    &:before {
+      left: 0;
+      top: 5%;
+      position: absolute;
+      content: ' ';
+      border-radius: 1rem;
+      background-color: rgba($color: $color_white, $alpha: 0.9);
+      transform: rotate(45deg);
+      // @include phones {
+      //   top: 2%;
+      // }
+    }
+
+    &:after {
+      bottom: 2%;
+      top: initial;
+      left: 0%;
+      position: absolute;
+      content: ' ';
+      border-radius: 1rem;
+      background-color: rgba($color: $color_white, $alpha: 0.9);
+      transform: rotate(-45deg);
+    }
+  }
+}
+.hamburger__svg {
+  fill: $color_white;
+  width: 40px;
+  height: 35px;
+  // @include phones {
+  //   width: 26px;
+  //   height: 23px;
+  // }
+}

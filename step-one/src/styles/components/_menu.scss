@@ -1,0 +1,184 @@
+.menu {
+  position: relative;
+  z-index: 105;
+  @include flex-prop;
+  background-color: darken($color_blue, 30%);
+  padding: 1.5rem 1.5rem;
+
+  &:before {
+    position: absolute;
+    content: ' ';
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: darken($color_blue, 30%);
+    z-index: 104;
+  }
+
+  @include tablets {
+    padding: 0.95rem;
+    justify-content: flex-start;
+  }
+  .menu__logo {
+    z-index: 105;
+    width: 120px;
+    height: 50px;
+    flex-shrink: 0;
+    background-image: inline_svg('logo', $color_light_blue_hide);
+    background-repeat: no-repeat;
+    background-size: cover;
+    @include tablets {
+      width: 100px;
+      height: 42px;
+    }
+  }
+  .menu__list {
+    display: flex;
+    z-index: 105;
+    @include tablets {
+      position: absolute;
+      top: -100vh;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background-color: white;
+      color: black;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      order: 1;
+      transition: top 0.7s ease-in-out;
+      &.active {
+        top: 100%;
+      }
+    }
+  }
+
+  .menu__item {
+    position: relative;
+    padding: 0 0.4rem;
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+    font-weight: 400;
+    text-transform: uppercase;
+    text-align: center;
+
+    &--new:after {
+      position: absolute;
+      content: 'NEW';
+      color: rgb(113, 230, 152);
+      text-decoration: underline;
+      top: 3px;
+      right: -10px;
+      transform: rotate(35deg);
+    }
+
+    &:first-child {
+      margin-right: 2rem;
+    }
+
+    @include tablets {
+      width: 100%;
+      padding: 1.5rem 0.4rem;
+      &:first-child {
+        margin-right: 0;
+      }
+      &--new:after {
+        right: 20%;
+        top: 20%;
+      }
+
+      &:before {
+        position: absolute;
+        bottom:  0;
+        left: 0;
+        content: ' ';
+        border-top: 1px solid black;
+        opacity: 0.3;
+        width: 100vw;
+      }
+    }
+  }
+
+  .menu__link {
+    display: inline-block;
+    @include tablets {
+      color: rgb(112, 59, 155);
+      font-weight: 500;
+    }    
+
+    &--green {
+      background-color: rgb(113, 230, 152);
+      padding: 1rem 1.8rem;
+      color: black;
+      @include tablets {
+        padding: 0;
+        background-color: transparent;
+        color: rgb(112, 59, 155);        
+      }      
+    }
+    &--violet {
+      background-color: rgb(112, 59, 155);
+      padding: 1rem 2rem;
+      width: rem(140px);
+      @include tablets {
+        width: 90%;
+        color: white;
+      }
+    }
+    &--announce {
+      width: 25px;
+      height: 32px;
+      background-repeat: no-repeat;
+      background-image: inline_svg('announce', rgb(113, 230, 152));
+      font-size: 0;
+      &:hover {
+        background-image: inline_svg('announce', green);
+      }
+      @include tablets {
+        width: initial;
+        height: initial;
+        font-size: inherit;
+        background: none;
+        &:hover {
+          background: none;
+        }
+      }      
+    }
+
+    @include tablets {
+      margin: 0 auto;
+    }
+  }
+
+  .menu__login {
+    z-index: 105;
+    position: relative;
+    display: inline-block;
+    margin-left: 0.2rem;
+    padding-right: 1.5rem;
+    color: $color_light_blue_hide;
+    font-weight: 400;
+    text-decoration: none;
+
+    &:hover {
+      color: $color_white;
+
+      &:after {
+        background-image: inline_svg('sign_in', $color_white);
+      }
+    }
+
+    &:after {
+      content: ' ';
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 14px;
+      height: 18px;
+      background-image: inline_svg('sign_in', $color_blue_hide);
+    }
+  }
+}

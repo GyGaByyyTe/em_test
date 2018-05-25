@@ -1,0 +1,32 @@
+mixin menu
+    menu.menu
+        .hamburger                
+            a(class='hamburger__link') Меню
+                .hamburger__line   
+        .menu__logo                 
+        .custom-select                
+            select#custom-select
+                option(value="0") EN
+                option(value="1") RUS
+                option(value="2") JP
+                option(value="3") TEST               
+        ul.menu__list#nav
+            li.menu__item.menu__item--new 
+                a.menu__link Evaluation
+            li.menu__item 
+                a.menu__link Coin
+            li.menu__item 
+                a.menu__link team
+            li.menu__item
+                a.menu__link FAQ            
+            li.menu__item
+                a.menu__link videos           
+            li.menu__item
+                a.menu__link news
+            li.menu__item
+                a.menu__link.menu__link--announce announcements            
+            li.menu__item
+                a.menu__link.menu__link--violet log in           
+            li.menu__item
+                a.menu__link.menu__link--green whitepaper                                           
+        a.menu__login Log in

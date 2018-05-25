@@ -1,0 +1,10 @@
+.svg {
+	width: 10em;
+	height: 5rem;
+}
+svg #brace {
+	fill:red;
+}
+svg:hover #brace {
+	fill:blue;
+}
